@@ -1,0 +1,185 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  min-height: 100svh;
+}
+
+button {
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.app_loader {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.small {
+  justify-content: center;
+  height: 10rem;
+}
+
+.flyContainer {
+  border: 1px solid black;
+  color: pink;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+
+  width: 50em;
+  cursor: pointer;
+}
+.flyContainer:hover {
+  background-color: aliceblue;
+  border: none;
+  color: blueviolet;
+}
+
+.flycarHolder {
+  width: 60em;
+  min-height: 80svh;
+  margin: 0 auto;
+  border: 2px solid pink;
+}
+.inputField {
+  margin: 0 auto;
+  border: 1px solid black;
+  width: 60rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+input {
+  margin: 1rem;
+}
+
+.buttons {
+  width: 60em;
+  margin: 0 auto;
+}
+
+.filterButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  width: 15rem;
+  margin-left: 1rem;
+
+  border: 1px solid red;
+  position: absolute;
+}
+
+.filterButtons legend {
+  margin-left: 12%;
+  margin-bottom: 1rem;
+}
+
+.sortButtonHolder {
+  width: 50rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid pink;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.sortButton {
+  border: 1px solid blue;
+  padding: 1rem;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+.sortButton:hover {
+  background-color: azure;
+  border: none;
+  opacity: 0.8;
+}
+
+.active {
+  background-color: blueviolet;
+}
+.modal_container {
+  position: absolute;
+  width: 60em;
+  background-color: brown;
+  cursor: pointer;
+}
+
+.modal_header_wraper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal_content_wraper {
+  padding: 1rem;
+}
+.modal_header_wraper h1 {
+  cursor: pointer;
+}
+.modal_content_from {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5em;
+  padding: 2em;
+}
+.modal_content_details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-end;
+}
+.modal_content_buy_ticket {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+.modal_content_fly_details_wraper {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 3em;
+}
+.modal_content_fly_details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.modal_content_fly_price_details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 3em;
+}
+
+.close_modal_window_button {
+  transition: all 0.5s ease-in-out;
+}
+.close_modal_window_button:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.modal_container h1:hover,
+h2:hover {
+  color: white;
+}
