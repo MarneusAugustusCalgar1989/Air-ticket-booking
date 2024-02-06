@@ -113,7 +113,11 @@ const WeeklyFlyCard = ({
           />
         )}
         <div
-          className='flyContainer'
+          className={
+            inputData.flightDate === dateConverter(airDate)[0]
+              ? 'flyContainer match_date'
+              : 'flyContainer'
+          }
           onClick={e => {
             if (!document.querySelector('.clicked') && !clicked) {
               e.target.parentNode.classList.toggle('clicked');
@@ -122,6 +126,11 @@ const WeeklyFlyCard = ({
             } else {
             }
           }}
+          title={
+            inputData.flightDate === dateConverter(airDate)[0]
+              ? 'Это билет на выбранную вами дату'
+              : 'Нажмите, чтобы получить подробности'
+          }
         >
           <p>Откуда: {origin}</p>
           <p>Куда: {destination}</p>

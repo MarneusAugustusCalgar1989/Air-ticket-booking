@@ -107,17 +107,6 @@ const InputData = ({ takeData }) => {
     e.preventDefault();
 
     return takeData(inputData);
-
-    // setInputCheck({ origin: false, destination: false, date: false });
-
-    // document.querySelector('.origin').value = '';
-    // document.querySelector('.origin').style.border = '1px solid black';
-    // document.querySelector('.origin').style.outlineColor = 'black';
-    // document.querySelector('.destination').value = '';
-    // document.querySelector('.destination').style.border = '1px solid black';
-    // document.querySelector('.destination').style.outlineColor = 'black';
-
-    // document.querySelector('input[type="date"]').value = todayDate;
   };
   return (
     <div
@@ -163,9 +152,11 @@ const InputData = ({ takeData }) => {
           }}
         />
 
-        {!Object.values(inputCheck).includes(false) && (
-          <button type='submit'>Искать</button>
-        )}
+        <div className='input_button_wrapper'>
+          {!Object.values(inputCheck).includes(false) && (
+            <button type='submit'>Искать</button>
+          )}
+        </div>
       </form>
     </div>
   );

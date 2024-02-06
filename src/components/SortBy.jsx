@@ -2,10 +2,15 @@ import React from 'react';
 
 const SortBy = ({ setSorters, setMyData, flightData }) => {
   const activeFilter = e => {
-    document.querySelectorAll('.sortButton').forEach(el => {
-      el.parentNode.classList.remove('active');
-    });
-    e.target.parentNode.classList.toggle('active');
+    if (document.querySelector('.sortButtonHolder').querySelector('.active')) {
+      document
+        .querySelector('.sortButtonHolder')
+        .querySelector('.active')
+        .classList.remove('active');
+    }
+    e.target.classList.value.includes('sortButton')
+      ? e.target.classList.toggle('active')
+      : e.target.parentNode.classList.toggle('active');
   };
 
   const sortByPrice = e => {

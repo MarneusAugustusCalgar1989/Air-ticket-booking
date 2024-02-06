@@ -5,7 +5,6 @@ import FilterByTransfer from './components/FilterByTransfer';
 import SortBy from './components/SortBy';
 import InputData from './components/InputData';
 import WeeklyFlyCard from './components/WeeklyFlyCard';
-import { click } from '@testing-library/user-event/dist/click';
 
 function App() {
   const [airlineData, setAirlineData] = useState([]);
@@ -27,7 +26,6 @@ function App() {
 
   const getClicked = value => {
     setClicked(value);
-    console.log(value);
   };
 
   useEffect(() => {
@@ -40,7 +38,6 @@ function App() {
 
   const takeData = value => {
     setDataToSend(value);
-
     setReady(true);
 
     if (Object.keys(dataToSend).length > 2) {
@@ -48,6 +45,7 @@ function App() {
     } else {
       setSpinner(true);
     }
+    setNoTickets(false);
   };
 
   const airlineQuery = () => {
@@ -79,15 +77,8 @@ function App() {
           setListingLoader(false);
           setSpinner(false);
           setSmallSpinner(false);
-          // myData.map(el => {
-          //   if (
-          //     el.departure_at.split('T')[0].toString() === dataToSend.flightDate
-          //   ) {
-          //     console.log(el);
-          //   }
-          // });
+
           if (data.data.prices_one_way.length === 0) {
-            console.log('Таких билетов нету');
             setNoTickets(true);
           }
         }
