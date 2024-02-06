@@ -1,165 +1,171 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 const InputData = ({ takeData }) => {
   const [inputCheck, setInputCheck] = useState({
     origin: false,
     destination: false,
     date: false,
-  });
+  })
 
   const [inputData, setInputData] = useState({
     originCode: '',
     destinationCode: '',
     flightDate: '',
-  });
+  })
 
   useEffect(() => {
-    makeDate();
-    setInputData({ ...inputData, flightDate: todayDate });
-  }, [window]);
+    makeDate()
+    setInputData({ ...inputData, flightDate: todayDate })
+  }, [window])
 
-  let todayDate = '';
+  let todayDate = ''
   const makeDate = () => {
-    const nowDate = new Date();
-    let nowDay = nowDate.getDate();
+    const nowDate = new Date()
+    let nowDay = nowDate.getDate()
     if (nowDay < 10) {
-      let arr = [0];
-      arr.push(nowDay);
-      nowDay = arr.join('');
+      let arr = [0]
+      arr.push(nowDay)
+      nowDay = arr.join('')
     }
 
-    let nowMonth = nowDate.getMonth() + 1;
+    let nowMonth = nowDate.getMonth() + 1
 
     if (nowMonth < 10) {
-      let arr = [0];
-      arr.push(nowMonth);
-      nowMonth = arr.join('');
+      let arr = [0]
+      arr.push(nowMonth)
+      nowMonth = arr.join('')
     }
 
-    let newformdate = [nowDay, nowMonth, nowDate.getFullYear()];
-    todayDate = newformdate.reverse().join('-');
-  };
+    let newformdate = [nowDay, nowMonth, nowDate.getFullYear()]
+    todayDate = newformdate.reverse().join('-')
+  }
 
   let acQuery =
-    'https://autocomplete.travelpayouts.com/places2?locale=ru&types[]=airport&types[]=city&term=';
+    'https://autocomplete.travelpayouts.com/places2?locale=ru&types[]=airport&types[]=city&term='
 
   const originInput = () => {
-    let origin = document.querySelector('.origin');
+    let origin = document.querySelector('.origin')
 
     if (origin.value === '') {
-      origin.style.border = 'none';
-      origin.style.borderBottom = '1px solid #00abc9';
-      setInputCheck({ ...inputCheck, origin: false });
+      origin.style.border = 'none'
+      origin.style.borderBottom = '1px solid #00abc9'
+      setInputCheck({ ...inputCheck, origin: false })
     } else {
       fetch(acQuery + origin.value)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data.length) {
             if (data[0].name.toLowerCase() === origin.value.toLowerCase()) {
-              origin.style.outlineColor = '#00abc9';
-              origin.style.borderBottom = '1px solid #00abc9';
-              setInputData({ ...inputData, originCode: data[0].code });
-              setInputCheck({ ...inputCheck, origin: true });
+              origin.style.outlineColor = '#00abc9'
+              origin.style.borderBottom = '1px solid #00abc9'
+              setInputData({ ...inputData, originCode: data[0].code })
+              setInputCheck({ ...inputCheck, origin: true })
             } else {
-              origin.style.outlineColor = 'red';
-              setInputCheck({ ...inputCheck, origin: false });
+              origin.style.outlineColor = 'red'
+              setInputCheck({ ...inputCheck, origin: false })
 
-              origin.style.borderBottom = '1px solid red';
+              origin.style.borderBottom = '1px solid red'
             }
           }
-        });
+        })
     }
-  };
+  }
 
   const destinationInput = () => {
-    let destination = document.querySelector('.destination');
+    let destination = document.querySelector('.destination')
 
     if (destination.value === '') {
-      destination.style.border = 'none';
-      destination.style.borderBottom = '1px solid #00abc9';
+      destination.style.border = 'none'
+      destination.style.borderBottom = '1px solid #00abc9'
 
-      setInputCheck({ ...inputCheck, destination: false });
+      setInputCheck({ ...inputCheck, destination: false })
     } else {
       fetch(acQuery + destination.value)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data.length) {
             if (
               data[0].name.toLowerCase() === destination.value.toLowerCase()
             ) {
-              destination.style.outlineColor = '#00abc9';
-              destination.style.borderBottom = '1px solid #00abc9';
-              setInputData({ ...inputData, destinationCode: data[0].code });
-              setInputCheck({ ...inputCheck, destination: true });
+              destination.style.outlineColor = '#00abc9'
+              destination.style.borderBottom = '1px solid #00abc9'
+              setInputData({ ...inputData, destinationCode: data[0].code })
+              setInputCheck({ ...inputCheck, destination: true })
             } else if (
               data[0].name.toLowerCase() !== destination.value.toLowerCase()
             ) {
-              destination.style.outlineColor = 'red';
-              destination.style.borderBottom = '1px solid red';
-              setInputCheck({ ...inputCheck, destination: false });
+              destination.style.outlineColor = 'red'
+              destination.style.borderBottom = '1px solid red'
+              setInputCheck({ ...inputCheck, destination: false })
             }
           }
-        });
+        })
     }
-  };
+  }
 
-  const addAdress = e => {
-    e.preventDefault();
+  const addAdress = (e) => {
+    e.preventDefault()
 
-    return takeData(inputData);
-  };
+    return takeData(inputData)
+  }
   return (
     <div
-      className='input_wrapper'
+      className="input_wrapper"
       onLoad={() => {
-        makeDate();
-        setInputData({ ...inputData, flightDate: todayDate });
+        makeDate()
+        setInputData({ ...inputData, flightDate: todayDate })
       }}
     >
       <form
-        onSubmit={e => {
-          addAdress(e);
+        onSubmit={(e) => {
+          addAdress(e)
         }}
       >
         <input
-          type='text'
-          placeholder='Откуда'
-          name='origin'
-          className='origin'
+          type="text"
+          placeholder="Откуда"
+          name="origin"
+          className="origin"
           onChange={() => {
-            originInput();
+            originInput()
           }}
         ></input>
         <input
-          type='text'
-          placeholder='Куда'
-          name='destination'
-          className='destination'
+          type="text"
+          placeholder="Куда"
+          name="destination"
+          className="destination"
           onChange={() => {
-            destinationInput();
+            destinationInput()
           }}
         ></input>
         <input
-          type='date'
-          id='start'
-          name='trip-start'
+          type="date"
+          id="start"
+          name="trip-start"
           min={todayDate}
-          max='2025-01-01'
+          max="2025-01-01"
           value={inputData.flightDate}
-          onChange={e => {
-            setInputCheck({ ...inputCheck, date: true });
-            setInputData({ ...inputData, flightDate: e.target.value });
+          onChange={(e) => {
+            setInputCheck({ ...inputCheck, date: true })
+            setInputData({ ...inputData, flightDate: e.target.value })
           }}
         />
 
-        <div className='input_button_wrapper'>
+        <div
+          className={
+            !Object.values(inputCheck).includes(false)
+              ? 'input_button_wrapper input_button_wider'
+              : 'input_button_wrapper'
+          }
+        >
           {!Object.values(inputCheck).includes(false) && (
-            <button type='submit'>Искать</button>
+            <button type="submit">Искать</button>
           )}
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default InputData;
+export default InputData

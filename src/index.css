@@ -535,6 +535,11 @@ h4 {
   height: 10rem;
 }
 
+.circle_loader {
+  width: 10rem;
+  height: 10rem;
+}
+
 .flyContainer {
   color: #00abc9;
   margin: 0 auto;
@@ -545,13 +550,22 @@ h4 {
   cursor: pointer;
   border-radius: 10px;
   border: 1px solid #00abc9;
+
+  animation: fade-in 0.5s ease-in-out 1;
 }
 
 .flycardHolder {
   max-width: 60rem;
   width: 90%;
-  min-height: 80svh;
+  /* min-height: 80svh; */
+  height: 0;
   margin: 0 auto;
+
+  transition: all 1s ease-in;
+}
+
+.flycardHolder_wider {
+  min-height: 80svh;
 }
 
 .match_date {
@@ -628,11 +642,16 @@ input:-internal-autofill-selected {
 }
 
 .input_button_wrapper {
-  height: 3rem;
+  height: 0rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: all 1s;
+}
+
+.input_button_wider {
+  height: 3rem;
 }
 
 .buttons {
@@ -690,6 +709,8 @@ input:-internal-autofill-selected {
   -webkit-box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
   -moz-box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
   box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
+
+  animation: filters_leftcoming 0.5s ease-in-out 1;
 }
 
 .filterButtons {
@@ -751,6 +772,13 @@ input:-internal-autofill-selected {
   -webkit-box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
   -moz-box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
   box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
+
+  animation: fade-in 0.5s ease-in-out 1;
+}
+
+.el_remove_anim {
+  animation: fade-in 0.5s ease-in-out 1;
+  animation-direction: reverse;
 }
 
 .modal_header_wraper {
@@ -844,6 +872,8 @@ h2:hover {
     align-items: center;
 
     top: 100svh;
+
+    animation: filters_downcoming 0.5s ease-in-out 1;
   }
 
   .filterButtons {
@@ -857,5 +887,89 @@ h2:hover {
 
     font-size: 50%;
     padding: 1rem;
+
+    animation: filters_downcoming 0.5s ease-in-out 1;
+  }
+}
+
+/*spinner*/
+
+.app_svg_spinner {
+  animation: rotate 2s linear infinite;
+  color: pink;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  width: 50px;
+  height: 50px;
+}
+
+.path {
+  fill: none;
+  stroke-width: 5;
+  stroke: #00abc9;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes filters_leftcoming {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 4%;
+  }
+  100% {
+    left: 1%;
+  }
+}
+
+@keyframes filters_downcoming {
+  0% {
+    top: -500%;
+  }
+  50% {
+    left: 80svh;
+  }
+  100% {
+    left: 100svh;
   }
 }
