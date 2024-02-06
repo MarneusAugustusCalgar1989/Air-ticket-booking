@@ -489,7 +489,14 @@ button {
 }
 
 .App h1 {
+  font-size: 120%;
   font-weight: 800;
+}
+
+.App h2,
+h3,
+h4 {
+  font-weight: 700;
 }
 
 .app_wrapper {
@@ -528,52 +535,56 @@ button {
 }
 
 .flyContainer {
-  border: 1px solid black;
-  color: pink;
+  color: #00abc9;
   margin: 0 auto;
   margin-bottom: 1rem;
   margin-top: 1rem;
   padding: 1rem;
-
   max-width: 60rem;
   cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #00abc9;
 }
 
 .flycardHolder {
   max-width: 60rem;
   width: 90%;
-
   min-height: 80svh;
   margin: 0 auto;
-  border: 2px solid pink;
 }
 
 div.flycardHolder > div:nth-child(1) > div > div {
-  border: 2px dotted red;
+  border: 2px dotted #00abc9;
 }
 
 .flycardHolder > div:nth-child(1) > div > div::before {
-  content: 'Это ваша дата';
+  content: 'Это билет на вашу дату';
   color: red;
   font-weight: bolder;
 }
 
 .flycardHolder > div:nth-child(1) > div > div::after {
-  content: 'Это ваша дата';
+  content: 'Это билет на вашу дату';
   color: red;
   font-weight: bolder;
   line-height: 1em;
 }
 
 .flyContainer:hover {
-  background-color: aliceblue;
+  background-color: #00abc9;
+  color: white;
   border: none;
-  color: blueviolet;
+}
+.flyContainer:active {
+  -webkit-box-shadow: -2px -2px 29px -5px rgba(255, 255, 255, 50) inset;
+  -moz-box-shadow: -2px -2px 29px -5px rgba(255, 255, 255, 50) inset;
+  box-shadow: -2px -2px 29px -5px rgba(255, 255, 255, 50) inset;
 }
 
 .inputField {
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid #00abc9;
+  border-radius: 10px;
   max-width: 60rem;
   display: flex;
   flex-direction: row;
@@ -581,6 +592,7 @@ div.flycardHolder > div:nth-child(1) > div > div {
   justify-content: center;
   padding: 1rem;
 }
+
 .input_wrapper {
   display: flex;
   flex-direction: row;
@@ -591,11 +603,66 @@ div.flycardHolder > div:nth-child(1) > div > div {
 input {
   margin: 1rem;
   max-width: 100%;
+  border: none;
+  border-bottom: 1px solid #00abc9;
+  color: #00abc9;
+  background-color: #ddfaff;
+  font-weight: bolder;
+}
+
+input::placeholder {
+  color: #00abc9;
+  opacity: 0.3;
+}
+
+input[type='text']:hover {
+  border-bottom: 3px solid #00abc9;
 }
 
 .buttons {
   max-width: 60em;
   margin: 0 auto;
+}
+
+.App button {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: #00abc9;
+  color: white;
+}
+
+.App button:hover {
+  background-color: #ddfaff;
+  border: 1px solid #00abc9;
+  color: #00abc9;
+}
+
+.App button:active {
+  background-color: #ddfaff;
+  border: 1px solid #00abc9;
+  color: #00abc9;
+  -webkit-box-shadow: 0px 2px 2px 2px #00abc9 inset;
+  -moz-box-shadow: 0px 2px 2px 2px #00abc9 inset;
+  box-shadow: 0px 2px 2px 2px #00abc9 inset;
+}
+
+.modal_container button {
+  background-color: white;
+  padding: 1rem;
+  transition: all 0.7s ease-in-out;
+}
+
+.modal_container button:hover {
+  background-color: white;
+  transform: scale(1.1);
+}
+
+.modal_container button a {
+  text-decoration: none;
+  color: #00abc9;
+  font-weight: bolder;
+  opacity: 1;
 }
 
 .filterButtons_wrapper {
@@ -628,36 +695,45 @@ input {
 
 .sortButtonHolder {
   max-width: 60rem;
+  min-width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  border: 1px solid pink;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .sortButton {
-  border: 1px solid blue;
+  background-color: #00abc9;
+  color: white;
   padding: 1rem;
-  max-width: 50%;
+  width: 50%;
   height: 100%;
   cursor: pointer;
   margin: 1rem;
+  border-radius: 10px;
 }
 .sortButton:hover {
-  background-color: azure;
-  border: none;
-  opacity: 0.8;
+  border: 2px solid #00abc9;
+  background-color: #ddfaff;
+  color: #00abc9;
 }
 
 .active {
-  background-color: blueviolet;
+  border: 2px solid #00abc9;
+  background-color: #ddfaff;
+  color: #00abc9;
 }
 .modal_container {
   position: sticky;
   max-width: 80rem;
-  background-color: brown;
+  background-color: #00abc9;
+  color: white;
   cursor: pointer;
+  border-radius: 10px;
+  -webkit-box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
+  -moz-box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
+  box-shadow: 19px 15px 22px 0px rgba(129, 140, 142, 0.92);
 }
 
 .modal_header_wraper {
@@ -719,11 +795,16 @@ input {
 }
 .close_modal_window_button:hover {
   transform: scale(1.1);
-  color: white;
+  opacity: 0.8;
 }
 
 .modal_container h1:hover,
 h2:hover {
+  opacity: 0.8;
+}
+
+.clicked {
+  background-color: #00abc9;
   color: white;
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const ModalWindow = ({ data, setModal }) => {
+const ModalWindow = ({ data, setModal, getClicked }) => {
   useEffect(() => {
     if (document.querySelector('.modal_container')) {
       document
@@ -17,7 +17,9 @@ const ModalWindow = ({ data, setModal }) => {
           <h1
             className='close_modal_window_button'
             onClick={() => {
-              setModal();
+              setModal(false);
+              document.querySelector('.clicked').classList.toggle('clicked');
+              getClicked(false);
             }}
           >
             &times;

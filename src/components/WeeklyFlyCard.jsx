@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import ModalWindow from './ModalWindow';
-import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers';
 
-const WeeklyFlyCard = ({ flyData, inputData, airlineData, modalMaker }) => {
+const WeeklyFlyCard = ({
+  flyData,
+  inputData,
+  airlineData,
+  getClicked,
+  clicked,
+}) => {
   const [modal, setModal] = useState(false);
+
   const priceReview = priceNumber => {
     let newNumber = flyData.value.toString();
 
@@ -99,11 +105,22 @@ const WeeklyFlyCard = ({ flyData, inputData, airlineData, modalMaker }) => {
   return (
     <div>
       <div>
-        {modal && <ModalWindow data={dataForModal} setModal={setModal} />}
+        {modal && (
+          <ModalWindow
+            data={dataForModal}
+            setModal={setModal}
+            getClicked={getClicked}
+          />
+        )}
         <div
           className='flyContainer'
           onClick={e => {
-            modal ? setModal(false) : setModal(true);
+            if (!document.querySelector('.clicked') && !clicked) {
+              e.target.parentNode.classList.toggle('clicked');
+              setModal(true);
+              getClicked(true);
+            } else {
+            }
           }}
         >
           <p>Откуда: {origin}</p>

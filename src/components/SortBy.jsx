@@ -3,9 +3,9 @@ import React from 'react';
 const SortBy = ({ setSorters, setMyData, flightData }) => {
   const activeFilter = e => {
     document.querySelectorAll('.sortButton').forEach(el => {
-      el.classList.remove('active');
+      el.parentNode.classList.remove('active');
     });
-    e.target.classList.add('active');
+    e.target.parentNode.classList.toggle('active');
   };
 
   const sortByPrice = e => {
@@ -33,7 +33,7 @@ const SortBy = ({ setSorters, setMyData, flightData }) => {
           sortByPrice(e);
         }}
       >
-        Самый дешевый
+        <h2>Самый дешевый</h2>
       </div>
       <div
         className='sortButton'
@@ -41,7 +41,7 @@ const SortBy = ({ setSorters, setMyData, flightData }) => {
           sortByDuration(e);
         }}
       >
-        Самый быстрый
+        <h2>Самый быстрый</h2>
       </div>
     </div>
   );
