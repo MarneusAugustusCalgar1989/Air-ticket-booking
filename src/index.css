@@ -512,10 +512,12 @@ h4 {
   width: 5rem;
   max-width: 300px;
   padding: 0.5em;
-  border-radius: 5rem;
+  border-radius: 50%;
+  border: 0.15rem solid #00abc9;
   margin: 0 auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  background: #ddfaff;
 }
 .main_logo {
   object-fit: contain;
@@ -912,6 +914,11 @@ h2:hover {
   stroke: #00abc9;
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
+}
+
+.bxs-plane-alt {
+  color: #00abc9;
+  font-size: 5rem;
 }
 
 @keyframes rotate {
