@@ -112,7 +112,8 @@ function App() {
         <div className="app_wrapper">
           {/* <h1>ЛОГО</h1> */}
           <div className="image_holder">
-            <img className="main_logo" src="./images/logo.png"></img>
+            {/* <img className='main_logo' src='./images/logo.png'></img> */}
+            <i class="bx bxs-plane-alt"></i>
           </div>
 
           {!!error && (
