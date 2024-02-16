@@ -57,7 +57,12 @@ function App() {
       .then((data) => {
         setAirlineData(data)
       })
-      .catch((error) => setError(error.message))
+      .catch((error) => {
+        setError(error.message)
+        alert(
+          'Сервер сервиса временно отключен. Обратитесь к разработчику за уточнениями.'
+        )
+      })
       .finally(() => {
         setReady(true)
       })
@@ -102,12 +107,19 @@ function App() {
           </svg>
         </div>
       )}
+
       {ready && (
         <div className="app_wrapper">
           {/* <h1>ЛОГО</h1> */}
           <div className="image_holder">
             <img className="main_logo" src="./images/logo.png"></img>
           </div>
+
+          {!!error && (
+            <div className="error_place">
+              <h1>Произошла чудовищная ошибка.</h1>
+            </div>
+          )}
           {airlineData.length > 0 && (
             <div className="inputField">
               <InputData takeData={takeData} />
