@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import BookingForm from './BookingForm'
 
 const ModalWindow = ({ data, setModal, getClicked }) => {
   useEffect(() => {
@@ -67,11 +68,7 @@ const ModalWindow = ({ data, setModal, getClicked }) => {
             </div>
           </div>
 
-          {bookingWindow && (
-            <div className="booking_form">
-              <h2>Форма для бронирования</h2>
-            </div>
-          )}
+          {bookingWindow && <BookingForm />}
 
           <button
             className="modal_content_buy_ticket"
