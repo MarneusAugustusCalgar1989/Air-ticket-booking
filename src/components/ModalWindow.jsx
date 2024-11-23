@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ModalWindow = ({ data, setModal, getClicked }) => {
   useEffect(() => {
@@ -8,6 +8,12 @@ const ModalWindow = ({ data, setModal, getClicked }) => {
         .scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
   }, [setModal])
+
+  const [bookingWindow, setBookingWindow] = useState(false)
+
+  const addBookingWindow = () => {
+    console.log('booo')
+  }
 
   return (
     <div>
@@ -61,10 +67,17 @@ const ModalWindow = ({ data, setModal, getClicked }) => {
             </div>
           </div>
 
-          <button className="modal_content_buy_ticket">
-            <a href={data.ticketLink} target="blank">
-              Купить билет
-            </a>
+          {bookingWindow && (
+            <div className="booking_form">
+              <h2>Форма для бронирования</h2>
+            </div>
+          )}
+
+          <button
+            className="modal_content_buy_ticket"
+            onClick={() => setBookingWindow(true)}
+          >
+            <a>Забронировать билет</a>
           </button>
         </div>
       </div>

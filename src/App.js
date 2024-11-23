@@ -56,6 +56,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setAirlineData(data)
+        setError(false)
       })
       .catch((error) => {
         setError(error.message)
@@ -74,16 +75,23 @@ function App() {
 
   const initData = `{"query":"{prices_one_way(params: {origin: \\"${dataToSend.originCode}\\", destination: \\"${dataToSend.destinationCode}\\", depart_months: \\"${dataToSend.flightDate}\\", no_lowcost: false}paging: {limit: 10, offset:0}sorting: ROUTE_WEIGHT_DESC currency:\\"RUB\\" grouping: DEPART_DATE)  {departure_at value currency distance duration ticket_link number_of_changes main_airline trip_class}}"}`
 
+  const initDataNoGraph = {
+    currency: 'rub',
+    show_to_affiliates: 'true',
+    origin: dataToSend.originCode,
+    destination: dataToSend.destinationCode,
+  }
+
   const ticketQuery = () => {
-    fetch('http://213.59.156.172:3000/ql', {
+    fetch('http://213.59.156.172:3000/alltickets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(initData),
+      body: JSON.stringify(initDataNoGraph),
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.data) {
-          setMyData(data.data.prices_one_way)
+          setMyData(data.data)
           setNoTickets(false)
           setListingLoader(false)
           setSpinner(false)
@@ -116,11 +124,11 @@ function App() {
             <i className="bx bxs-plane-alt"></i>
           </div>
 
-          {!!error && (
+          {/* {!!error && (
             <div className="error_place">
               <h1>Произошла чудовищная ошибка.</h1>
             </div>
-          )}
+          )} */}
           {airlineData.length > 0 && (
             <div className="inputField">
               <InputData takeData={takeData} />

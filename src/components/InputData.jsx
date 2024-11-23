@@ -58,7 +58,11 @@ const InputData = ({ takeData }) => {
             if (data[0].name.toLowerCase() === origin.value.toLowerCase()) {
               origin.style.outlineColor = '#00abc9'
               origin.style.borderBottom = '1px solid #00abc9'
-              setInputData({ ...inputData, originCode: data[0].code })
+              setInputData({
+                ...inputData,
+                originCode: data[0].code,
+                originPlace: origin.value.toUpperCase(),
+              })
               setInputCheck({ ...inputCheck, origin: true })
             } else {
               origin.style.outlineColor = 'red'
@@ -89,7 +93,11 @@ const InputData = ({ takeData }) => {
             ) {
               destination.style.outlineColor = '#00abc9'
               destination.style.borderBottom = '1px solid #00abc9'
-              setInputData({ ...inputData, destinationCode: data[0].code })
+              setInputData({
+                ...inputData,
+                destinationCode: data[0].code,
+                destinationPlace: destination.value.toUpperCase(),
+              })
               setInputCheck({ ...inputCheck, destination: true })
             } else if (
               data[0].name.toLowerCase() !== destination.value.toLowerCase()
@@ -106,8 +114,9 @@ const InputData = ({ takeData }) => {
   const addAdress = (e) => {
     e.preventDefault()
 
-    return takeData(inputData)
+    return takeData(inputData, 'inputData')
   }
+
   return (
     <div
       className="input_wrapper"
@@ -144,7 +153,7 @@ const InputData = ({ takeData }) => {
           id="start"
           name="trip-start"
           min={todayDate}
-          max="2025-01-01"
+          max="2027-01-01"
           value={inputData.flightDate}
           onChange={(e) => {
             setInputCheck({ ...inputCheck, date: true })
