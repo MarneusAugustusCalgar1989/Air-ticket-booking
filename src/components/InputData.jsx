@@ -135,6 +135,7 @@ const InputData = ({ takeData }) => {
           placeholder="Откуда"
           name="origin"
           className="origin"
+          autoComplete="off"
           onChange={() => {
             originInput()
           }}
@@ -143,6 +144,7 @@ const InputData = ({ takeData }) => {
           type="text"
           placeholder="Куда"
           name="destination"
+          autoComplete="off"
           className="destination"
           onChange={() => {
             destinationInput()

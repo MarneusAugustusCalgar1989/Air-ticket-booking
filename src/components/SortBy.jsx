@@ -13,8 +13,6 @@ const SortBy = ({
         el.classList.remove('active')
       }
     })
-
-    console.log('Something changes')
   }, [spinner, smallSpinner])
 
   const activeFilter = (e) => {

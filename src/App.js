@@ -73,8 +73,6 @@ function App() {
     ticketQuery()
   }, [dataToSend])
 
-  const initData = `{"query":"{prices_one_way(params: {origin: \\"${dataToSend.originCode}\\", destination: \\"${dataToSend.destinationCode}\\", depart_months: \\"${dataToSend.flightDate}\\", no_lowcost: false}paging: {limit: 10, offset:0}sorting: ROUTE_WEIGHT_DESC currency:\\"RUB\\" grouping: DEPART_DATE)  {departure_at value currency distance duration ticket_link number_of_changes main_airline trip_class}}"}`
-
   const initDataNoGraph = {
     currency: 'rub',
     show_to_affiliates: 'true',
@@ -124,11 +122,6 @@ function App() {
             <i className="bx bxs-plane-alt"></i>
           </div>
 
-          {/* {!!error && (
-            <div className="error_place">
-              <h1>Произошла чудовищная ошибка.</h1>
-            </div>
-          )} */}
           {airlineData.length > 0 && (
             <div className="inputField">
               <InputData takeData={takeData} />
@@ -185,7 +178,7 @@ function App() {
                     flyData={el}
                     inputData={dataToSend}
                     airlineData={airlineData}
-                    key={el.departure_at}
+                    key={myData.indexOf(el)}
                     getClicked={getClicked}
                     clicked={clicked}
                   />
@@ -197,8 +190,5 @@ function App() {
     </div>
   )
 }
-//  token
-// {
-//   "X-Access-token": "bc99cead7d4f7cbf0b85723bcb406ea0"
-//   }
+
 export default App
